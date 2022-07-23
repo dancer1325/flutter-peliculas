@@ -39,7 +39,7 @@ class CardSwiper extends StatelessWidget {
 
           movie.heroId = 'swiper-${ movie.id }';
 
-          return GestureDetector(
+          return GestureDetector(   // It allows doing navigation based on Tap event
             onTap: () => Navigator.pushNamed(context, 'details', arguments: movie),
             child: Hero(
               tag: movie.heroId!,
