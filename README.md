@@ -49,3 +49,7 @@ samples, guidance on mobile development, and a full API reference.
         * Swiper / Carousel for Flutter
 * How to add assets?
     * Specify it in 'pubspec.yaml'
+* Shortcuts
+    * Wrap a Widget
+        * [VSC] 'CTRL + .'
+        * [Android Studio] 'ALT + Enter'

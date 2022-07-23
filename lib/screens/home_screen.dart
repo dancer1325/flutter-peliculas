@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView(    // Widget to avoid problems if we exceed device's size, since you can scroll
         child: Column(    // To place Widgets one down to each other
           children: [
             // Tarjetas principales

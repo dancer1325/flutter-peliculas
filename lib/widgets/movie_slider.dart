@@ -39,9 +39,6 @@ class _MovieSliderState extends State<MovieSlider> {
 
   @override
   void dispose() {
-    
-
-
     super.dispose();
   }
 
@@ -63,10 +60,10 @@ class _MovieSliderState extends State<MovieSlider> {
 
           SizedBox( height: 5 ),
 
-          Expanded(
+          Expanded(     // Widget to avoid problems with the size, since it's expanded to all the parent Widget's size
             child: ListView.builder(
               controller: scrollController,
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.horizontal,     // By default the scroll is vertical
               itemCount: widget.movies.length,
               itemBuilder: ( _, int index) => _MoviePoster( widget.movies[index], '${ widget.title }-$index-${ widget.movies[index].id }' )
             ),
@@ -78,8 +75,6 @@ class _MovieSliderState extends State<MovieSlider> {
 }
 
 class _MoviePoster extends StatelessWidget {
-
-  
   final Movie movie;
   final String heroId;
 
@@ -87,7 +82,6 @@ class _MoviePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     movie.heroId = heroId;
 
     return Container(
@@ -96,15 +90,15 @@ class _MoviePoster extends StatelessWidget {
       margin: EdgeInsets.symmetric( horizontal: 10 ),
       child: Column(
         children: [
-
-          GestureDetector(
+          GestureDetector(        // It allows doing navigation based on Tap event
             onTap: () => Navigator.pushNamed(context, 'details', arguments: movie ),
             child: Hero(
               tag: movie.heroId!,
-              child: ClipRRect(
+              child: ClipRRect(   // Wrap FadeInImage with it, to add a 'borderRadius'
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
-                  placeholder: AssetImage('assets/no-image.jpg'), 
+                  placeholder: AssetImage('assets/no-image.jpg'),
+                  // image: NetworkImage('https://via.placeholder.com/300x400')     // Blank placeholder image
                   image: NetworkImage( movie.fullPosterImg ),
                   width: 130,
                   height: 190,
@@ -118,8 +112,8 @@ class _MoviePoster extends StatelessWidget {
 
           Text( 
             movie.title,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+            maxLines: 2,    // # of lines
+            overflow: TextOverflow.ellipsis,    // If all text can't be added --> '...' is added
             textAlign: TextAlign.center,
           )
 
