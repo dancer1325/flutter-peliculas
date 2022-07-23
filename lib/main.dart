@@ -6,7 +6,6 @@ import 'package:peliculas/providers/movies_provider.dart';
  
 void main() => runApp(AppState());
 
-
 class AppState extends StatelessWidget {
 
   @override
@@ -19,8 +18,6 @@ class AppState extends StatelessWidget {
     );
   }
 }
-
-
  
 class MyApp extends StatelessWidget {
   @override
@@ -32,8 +29,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'home':    ( _ ) => HomeScreen(),
         'details': ( _ ) => DetailsScreen(),
-      },
-      theme: ThemeData.light().copyWith(
+      },                          // It could be created in a specific folder
+      theme: ThemeData.light().copyWith(      // It could be created in a specific folder
         appBarTheme: AppBarTheme(
           color: Colors.indigo
         )
