@@ -41,3 +41,11 @@ samples, guidance on mobile development, and a full API reference.
         * https://stackoverflow.com/questions/72210806/warning-operand-of-null-aware-operation-has-type-schedulerbinding-which-e
 * Structure
     * Each folder contains specific file to export all the rest of files
+    
+* Dependencies
+    * 'flutter_card_swipper'
+        * How to add?
+            * `flutter pub add card_swiper`
+        * Swiper / Carousel for Flutter
+* How to add assets?
+    * Specify it in 'pubspec.yaml'

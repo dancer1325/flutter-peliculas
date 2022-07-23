@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:peliculas/models/models.dart';
 
-
 class CardSwiper extends StatelessWidget {
 
   final List<Movie> movies;
@@ -14,7 +13,7 @@ class CardSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    // Get the device's width
     final size = MediaQuery.of(context).size;
 
     if( this.movies.length == 0) {
@@ -28,15 +27,14 @@ class CardSwiper extends StatelessWidget {
     }
 
     return Container(
-      width: double.infinity,
+      width: double.infinity,     // Fulfill all the possible width
       height: size.height * 0.5,
       child: Swiper(
         itemCount: movies.length,
         layout: SwiperLayout.STACK,
         itemWidth: size.width * 0.6,
         itemHeight: size.height * 0.4,
-        itemBuilder: ( _ , int index ) {
-
+        itemBuilder: ( _ , int index ) {      // Since BuildContext isn't used --> _
           final movie = movies[index];
 
           movie.heroId = 'swiper-${ movie.id }';
@@ -45,10 +43,11 @@ class CardSwiper extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, 'details', arguments: movie),
             child: Hero(
               tag: movie.heroId!,
-              child: ClipRRect(
+              child: ClipRRect(   // Wrap FadeInImage with it, to add a 'borderRadius'
                 borderRadius: BorderRadius.circular(20),
                 child: FadeInImage(
                   placeholder: AssetImage('assets/no-image.jpg'),
+                  // image: NetworkImage('https://via.placeholder.com/300x400')     // Blank placeholder image
                   image: NetworkImage( movie.fullPosterImg ),
                   fit: BoxFit.cover,
                 ),

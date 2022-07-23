@@ -25,9 +25,8 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: Column(    // To place Widgets one down to each other
           children: [
-
             // Tarjetas principales
             CardSwiper( movies: moviesProvider.onDisplayMovies ),
 
@@ -37,7 +36,6 @@ class HomeScreen extends StatelessWidget {
               title: 'Populares', // opcional
               onNextPage: () => moviesProvider.getPopularMovies(),
             ),
-            
           ],
         ),
       )
