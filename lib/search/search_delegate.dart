@@ -74,7 +74,6 @@ class MovieSearchDelegate extends SearchDelegate {
 
 }
 
-
 class _MovieItem extends StatelessWidget {
 
   final Movie movie;

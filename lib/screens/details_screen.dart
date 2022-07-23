@@ -29,7 +29,6 @@ class DetailsScreen extends StatelessWidget {
   }
 }
 
-
 class _CustomAppBar extends StatelessWidget {
 
   final Movie movie;
@@ -67,7 +66,6 @@ class _CustomAppBar extends StatelessWidget {
     );
   }
 }
-
 
 class _PosterAndTitle extends StatelessWidget {
   
@@ -127,7 +125,6 @@ class _PosterAndTitle extends StatelessWidget {
   }
 }
 
-
 class _Overview extends StatelessWidget {
 
   final Movie movie;
@@ -146,7 +143,3 @@ class _Overview extends StatelessWidget {
     );
   }
 }
-
-
-
-

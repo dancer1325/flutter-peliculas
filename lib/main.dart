@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Películas',
-      initialRoute: 'home',
+      initialRoute: 'home',                   // It could be specified in a specific folder
       routes: {
-        'home':    ( _ ) => HomeScreen(),
+        'home':    ( _ ) => HomeScreen(),     // _    BuildContext    It's not specified, that's why it's indicated as '_'
         'details': ( _ ) => DetailsScreen(),
-      },                          // It could be created in a specific folder
-      theme: ThemeData.light().copyWith(      // It could be created in a specific folder
+      },                          // It could be specified in a specific folder
+      theme: ThemeData.light().copyWith(      // It could be specified in a specific folder
         appBarTheme: AppBarTheme(
           color: Colors.indigo
         )

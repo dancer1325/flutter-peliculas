@@ -77,7 +77,6 @@ class _MovieSliderState extends State<MovieSlider> {
   }
 }
 
-
 class _MoviePoster extends StatelessWidget {
 
   

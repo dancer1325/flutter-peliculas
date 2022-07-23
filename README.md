@@ -39,3 +39,5 @@ samples, guidance on mobile development, and a full API reference.
 * Warnings
     * Warning1: 'Warning: Operand of null-aware operation '!' has type 'SchedulerBinding'/'WidgetsBinding'/ which excludes null'
         * https://stackoverflow.com/questions/72210806/warning-operand-of-null-aware-operation-has-type-schedulerbinding-which-e
+* Structure
+    * Each folder contains specific file to export all the rest of files

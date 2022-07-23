@@ -12,7 +12,6 @@ class CardSwiper extends StatelessWidget {
     required this.movies
   }) : super(key: key);
 
-  
   @override
   Widget build(BuildContext context) {
 
@@ -27,8 +26,6 @@ class CardSwiper extends StatelessWidget {
         ),
       );
     }
-
-  
 
     return Container(
       width: double.infinity,

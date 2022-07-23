@@ -6,11 +6,8 @@ import 'package:peliculas/search/search_delegate.dart';
 import 'package:peliculas/providers/movies_provider.dart';
 import 'package:peliculas/widgets/widgets.dart';
 
-
 class HomeScreen extends StatelessWidget {
 
-  
-  
   @override
   Widget build(BuildContext context) {
 
