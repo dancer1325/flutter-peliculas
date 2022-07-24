@@ -15,10 +15,12 @@ class DetailsScreen extends StatelessWidget {
       body: CustomScrollView(       // Similar to SingleChildScrollView, but it allows working with slivers
         slivers: [    //  Widgets with certain pre programmed behavior, if you make scroll in the parent's content
           _CustomAppBar( movie ),
+          // Text('aaa'),           // Since it's not a sliver --> It won't work as it's expected
           SliverList(
-            delegate: SliverChildListDelegate([
+            delegate: SliverChildListDelegate([     // Here you can use any static Widget, such as Text(), ...
               _PosterAndTitle( movie ),
               _Overview( movie ),
+              Text('Hello'),
               _Overview( movie ),
               _Overview( movie ),
               CastingCards( movie.id )
@@ -76,17 +78,18 @@ class _PosterAndTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // Get the Theme
     final TextTheme textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
 
-    return Container(
+    return Container(   // Allows modifying padding and color
       margin: EdgeInsets.only( top: 20 ),
       padding: EdgeInsets.symmetric( horizontal: 20 ),
       child: Row(
         children: [
           Hero(
             tag: movie.heroId!,
-            child: ClipRRect(
+            child: ClipRRect(     // Allows adjusting border radius
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(
                 placeholder: AssetImage('assets/no-image.jpg'), 
