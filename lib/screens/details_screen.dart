@@ -7,12 +7,13 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // TODO: Cambiar luego por una instancia de movie
+    // Read the arguments passed
+    // final String movie = ModalRoute.of(context)!.settings.arguments.toString() ?? 'no-movie';
     final Movie movie = ModalRoute.of(context)!.settings.arguments as Movie;
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
+      body: CustomScrollView(       // Similar to SingleChildScrollView, but it allows working with slivers
+        slivers: [    //  Widgets with certain pre programmed behavior, if you make scroll in the parent's content
           _CustomAppBar( movie ),
           SliverList(
             delegate: SliverChildListDelegate([
@@ -30,14 +31,13 @@ class DetailsScreen extends StatelessWidget {
 }
 
 class _CustomAppBar extends StatelessWidget {
-
   final Movie movie;
 
   const _CustomAppBar( this.movie );
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
+    return SliverAppBar(      // === AppBar, but you can control height and width
       backgroundColor: Colors.indigo,
       expandedHeight: 200,
       floating: false,
@@ -68,7 +68,6 @@ class _CustomAppBar extends StatelessWidget {
 }
 
 class _PosterAndTitle extends StatelessWidget {
-  
   final Movie movie;
 
   const _PosterAndTitle( this.movie );
@@ -126,7 +125,6 @@ class _PosterAndTitle extends StatelessWidget {
 }
 
 class _Overview extends StatelessWidget {
-
   final Movie movie;
 
   const _Overview(this.movie);
