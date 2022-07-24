@@ -53,3 +53,6 @@ samples, guidance on mobile development, and a full API reference.
     * Wrap a Widget
         * [VSC] 'CTRL + .'
         * [Android Studio] 'ALT + Enter'
+* Flutter inspector
+    * [Android Studio] https://www.woolha.com/tutorials/using-flutter-widget-inspector-in-android-studio
+

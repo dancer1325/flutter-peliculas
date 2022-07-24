@@ -5,14 +5,12 @@ import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
 
 class CastingCards extends StatelessWidget {
-
   final int movieId;
 
   const CastingCards( this.movieId );
 
   @override
   Widget build(BuildContext context) {
-
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
 
     return FutureBuilder(
@@ -39,16 +37,12 @@ class CastingCards extends StatelessWidget {
             itemBuilder: ( _, int index) => _CastCard( cast[index] ),
           ),
         );
-
       },
     );
-
-    
   }
 }
 
 class _CastCard extends StatelessWidget {
-
   final Cast actor;
 
   const _CastCard( this.actor );
@@ -61,8 +55,7 @@ class _CastCard extends StatelessWidget {
       height: 100,
       child: Column(
         children: [
-
-          ClipRRect(
+          ClipRRect(      // Allows adjusting border radius
             borderRadius: BorderRadius.circular(20),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'), 
@@ -79,7 +72,6 @@ class _CastCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           )
-
         ],
       ),
     );
