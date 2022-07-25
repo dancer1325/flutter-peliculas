@@ -11,7 +11,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // Get access to the provider via context
     final moviesProvider = Provider.of<MoviesProvider>(context);
+    // final moviesProvider = Provider.of<MoviesProvider>(context, listen: true);
+    // listen   true - Value changes trigger automatically the redrawing. By default, it's true.    false - Required to call `Provider.of` inside the method
+
+    // Since you are notifying the listener --> Next line is invoked 3 times
+    print('moviesProvider.onDisplayMovies - HomeScreen-  ${moviesProvider.onDisplayMovies}');
 
     return Scaffold(
       appBar: AppBar(

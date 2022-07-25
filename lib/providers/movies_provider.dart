@@ -10,6 +10,7 @@ import 'package:peliculas/models/models.dart';
 import 'package:peliculas/models/search_response.dart';
 
 class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare as part of Material App's widgets, to share the information
+  // Required to make all about this class, to be accessible from the context in any part of the Flutter application
 
   // TODO: Not commit them
   String _apiKey   = '184dc64f82e7436b85a43f15c730c7c6';
@@ -29,8 +30,6 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
 
   final StreamController<List<Movie>> _suggestionStreamContoller = new StreamController.broadcast();
   Stream<List<Movie>> get suggestionStream => this._suggestionStreamContoller.stream;
-
-
 
   MoviesProvider() {
     print('MoviesProvider initialized');
@@ -59,7 +58,10 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
     
     onDisplayMovies = nowPlayingResponse.results;
-    
+    // It's possible to make the destructuring of the object
+    // onDisplayMovies = [...nowPlayingResponse.results];
+
+    // Force to redraw all the widgets, listening
     notifyListeners();
   }
 

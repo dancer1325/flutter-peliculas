@@ -34,12 +34,15 @@ class Movie {
     double voteAverage;
     int voteCount;
 
+    // Next property isn't contained by default, it's created by me
     String? heroId;
 
+    // fullPosterImg        Non existing property in provider's model. It's created to create the complete url to each movie's image
     get fullPosterImg {
       if ( this.posterPath != null )
         return 'https://image.tmdb.org/t/p/w500${ this.posterPath }';
 
+      // Internet image in case the image doesn't exist
       return 'https://i.stack.imgur.com/GNhxO.png';
     }
 

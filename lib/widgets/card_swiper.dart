@@ -3,7 +3,7 @@ import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:peliculas/models/models.dart';
 
 class CardSwiper extends StatelessWidget {
-
+  // Add this property to pass the movies got it via provider
   final List<Movie> movies;
 
   const CardSwiper({
