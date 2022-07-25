@@ -2,17 +2,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;      // as   Keyword operator
 
 import 'package:peliculas/helpers/debouncer.dart';
 
 import 'package:peliculas/models/models.dart';
 import 'package:peliculas/models/search_response.dart';
 
-class MoviesProvider extends ChangeNotifier {
+class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare as part of Material App's widgets, to share the information
 
-  String _apiKey   = '1865f43a0549ca50d341dd9ab8b29f49';
-  String _baseUrl  = 'api.themoviedb.org';
+  // TODO: Not commit them
+  String _apiKey   = '184dc64f82e7436b85a43f15c730c7c6';
+  String _baseUrl  = 'api.themoviedb.org';      // It doesn't contain https://, since it's already understood'
   String _language = 'es-ES';
 
   List<Movie> onDisplayMovies = [];
@@ -32,11 +33,10 @@ class MoviesProvider extends ChangeNotifier {
 
 
   MoviesProvider() {
-    print('MoviesProvider inicializado');
+    print('MoviesProvider initialized');
 
-    this.getOnDisplayMovies();
+    this.getOnDisplayMovies();      // this     It's unnecessary here, but it can be add it to remark it
     this.getPopularMovies();
-
   }
 
   Future<String> _getJsonData( String endpoint, [int page = 1] ) async {
@@ -45,15 +45,16 @@ class MoviesProvider extends ChangeNotifier {
       'language': _language,
       'page': '$page'
     });
+    print('url $url');
 
     // Await the http get response, then decode the json-formatted response.
     final response = await http.get(url);
+    print('response $response and response.body ${response.body}');
     return response.body;
   }
 
 
   getOnDisplayMovies() async {
-    
     final jsonData = await this._getJsonData('3/movie/now_playing');
     final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
     
@@ -63,7 +64,6 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   getPopularMovies() async {
-
     _popularPage++;
 
     final jsonData = await this._getJsonData('3/movie/popular', _popularPage );
@@ -86,15 +86,17 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<List<Movie>> searchMovies( String query ) async {
-
     final url = Uri.https( _baseUrl, '3/search/movie', {
       'api_key': _apiKey,
       'language': _language,
       'query': query
     });
+    print('url $url');
 
     final response = await http.get(url);
+    print('response $response and response.body ${response.body}');
     final searchResponse = SearchResponse.fromJson( response.body );
+    print('searchResponse $searchResponse');
 
     return searchResponse.results;
   }

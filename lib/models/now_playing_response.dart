@@ -18,11 +18,14 @@ class NowPlayingResponse {
 
     Dates dates;
     int page;
-    List<Movie> results;
+    List<Movie> results;        // In provider's model is named 'Result'
     int totalPages;
     int totalResults;
 
-    factory NowPlayingResponse.fromJson(String str) => NowPlayingResponse.fromMap(json.decode(str));
+    // factory     Constructor to return an
+    // A) existing instance (from a cache)
+    // B) new instance of a subtype
+    factory NowPlayingResponse.fromJson(String str) => NowPlayingResponse.fromMap(json.decode(str));        //json.decode()     Returns Map<String, dynamic>
 
     factory NowPlayingResponse.fromMap(Map<String, dynamic> json) => NowPlayingResponse(
         dates       : Dates.fromMap(json["dates"]),
@@ -42,7 +45,7 @@ class Dates {
     DateTime maximum;
     DateTime minimum;
 
-    factory Dates.fromJson(String str) => Dates.fromMap(json.decode(str));
+    factory Dates.fromJson(String str) => Dates.fromMap(json.decode(str));      //json.decode()     Returns Map<String, dynamic>
 
     factory Dates.fromMap(Map<String, dynamic> json) => Dates(
         maximum: DateTime.parse(json["maximum"]),
