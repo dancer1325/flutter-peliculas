@@ -6,8 +6,8 @@ import 'dart:convert';
 
 import 'movie.dart';
 
+// Paste, copying the postman's response generated in https://app.quicktype.io/
 class NowPlayingResponse {
-  
     NowPlayingResponse({
         required this.dates,
         required this.page,

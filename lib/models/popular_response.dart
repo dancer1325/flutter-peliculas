@@ -6,6 +6,7 @@ import 'dart:convert';
 
 import 'package:peliculas/models/models.dart';
 
+// Paste, copying the postman's response generated in https://app.quicktype.io/
 class PopularResponse {
     PopularResponse({
         required this.page,
@@ -15,7 +16,7 @@ class PopularResponse {
     });
 
     int page;
-    List<Movie> results;
+    List<Movie> results;        // In provider's model is named 'Result'
     int totalPages;
     int totalResults;
 

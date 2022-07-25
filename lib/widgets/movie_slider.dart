@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peliculas/models/models.dart';
 
 class MovieSlider extends StatefulWidget {
-
+  // Arguments passed to handle all about the MovieSlider
   final List<Movie> movies;
   final String? title;
   final Function onNextPage;

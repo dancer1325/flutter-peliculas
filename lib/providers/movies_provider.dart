@@ -70,8 +70,11 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
 
     final jsonData = await this._getJsonData('3/movie/popular', _popularPage );
     final popularResponse = PopularResponse.fromJson( jsonData );
-    
+
+    // Destructuring and concatenating with the one's already stored, since we are changing the page number
     popularMovies = [ ...popularMovies, ...popularResponse.results ];
+
+    // Force to redraw all the widgets, listening
     notifyListeners();
   }
 
