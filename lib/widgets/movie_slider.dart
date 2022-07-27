@@ -97,7 +97,7 @@ class _MoviePoster extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(        // It allows doing navigation based on Tap event
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: movie ),
+            onTap: () => Navigator.pushNamed(context, 'details', arguments: movie ),    // details    Name indicated as route
             child: Hero(
               tag: movie.heroId!,
               child: ClipRRect(   // Wrap FadeInImage with it, to add a 'borderRadius'

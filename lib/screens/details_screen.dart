@@ -35,7 +35,7 @@ class DetailsScreen extends StatelessWidget {
 class _CustomAppBar extends StatelessWidget {
   final Movie movie;
 
-  const _CustomAppBar( this.movie );
+  const _CustomAppBar( this.movie );  // Constructor with positional argument
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only( bottom: 10, left: 10, right: 10),
+          padding: EdgeInsets.only( bottom: 10, left: 10, right: 10),   // Avoid placing till the device's screen border
           color: Colors.black12,
           child: Text(
               movie.title,
@@ -72,14 +72,14 @@ class _CustomAppBar extends StatelessWidget {
 class _PosterAndTitle extends StatelessWidget {
   final Movie movie;
 
-  const _PosterAndTitle( this.movie );
-
+  const _PosterAndTitle( this.movie );    // Constructor with positional argument
 
   @override
   Widget build(BuildContext context) {
 
     // Get the Theme
     final TextTheme textTheme = Theme.of(context).textTheme;
+    // Get device's size
     final size = MediaQuery.of(context).size;
 
     return Container(   // Allows modifying padding and color
@@ -101,7 +101,7 @@ class _PosterAndTitle extends StatelessWidget {
 
           SizedBox( width: 20 ),
 
-          ConstrainedBox(
+          ConstrainedBox(     // Allow adding constraints
             constraints: BoxConstraints( maxWidth: size.width - 190 ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,7 +130,7 @@ class _PosterAndTitle extends StatelessWidget {
 class _Overview extends StatelessWidget {
   final Movie movie;
 
-  const _Overview(this.movie);
+  const _Overview(this.movie);    // Constructor with positional argument
 
   @override
   Widget build(BuildContext context) {
