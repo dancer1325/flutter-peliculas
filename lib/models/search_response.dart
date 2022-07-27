@@ -6,6 +6,7 @@ import 'dart:convert';
 
 import 'package:peliculas/models/models.dart';
 
+// Paste, copying the postman's response generated in https://app.quicktype.io/
 class SearchResponse {
     SearchResponse({
         required this.page,

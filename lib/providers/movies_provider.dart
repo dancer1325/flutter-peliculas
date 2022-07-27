@@ -24,6 +24,7 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     
   int _popularPage = 0;
 
+  // Class to launch a HTTP after pressing each keyboard
   final debouncer = Debouncer(
     duration: Duration( milliseconds: 500 ),
   );
@@ -98,6 +99,7 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     return creditsResponse.cast;
   }
 
+  // Also created, waiting for the response
   Future<List<Movie>> searchMovies( String query ) async {
     final url = Uri.https( _baseUrl, '3/search/movie', {
       'api_key': _apiKey,

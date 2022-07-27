@@ -26,6 +26,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon( Icons.search_outlined ),
+            //https://api.flutter.dev/flutter/material/showSearch.html
+            // Shows a full screen search page and returns the search result selected by the user when the page is closed.
             onPressed: () => showSearch(context: context, delegate: MovieSearchDelegate() ),
           )
         ],
