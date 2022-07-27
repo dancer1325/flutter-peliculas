@@ -35,6 +35,7 @@ class Movie {
     int voteCount;
 
     // Next property isn't contained by default, it's created by me
+    // Optional, because it's going to be added in the moment to create the Widget
     String? heroId;
 
     // fullPosterImg        Non existing property in provider's model. It's created to create the complete url to each movie's image

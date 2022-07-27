@@ -87,7 +87,7 @@ class _PosterAndTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric( horizontal: 20 ),
       child: Row(
         children: [
-          Hero(
+          Hero(       // Wrap with Hero to make a transaction -- animation in the transaction to share the same widget -- by tag
             tag: movie.heroId!,
             child: ClipRRect(     // Allows adjusting border radius
               borderRadius: BorderRadius.circular(20),

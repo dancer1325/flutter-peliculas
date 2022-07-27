@@ -71,7 +71,7 @@ class _MovieSliderState extends State<MovieSlider> {
               controller: scrollController,
               scrollDirection: Axis.horizontal,     // By default the scroll is vertical
               itemCount: widget.movies.length,
-              itemBuilder: ( _, int index) => _MoviePoster( widget.movies[index], '${ widget.title }-$index-${ widget.movies[index].id }' )
+              itemBuilder: ( _, int index) => _MoviePoster( widget.movies[index], '${ widget.title }-$index-${ widget.movies[index].id }' )     // Generate unique Id
             ),
           ),
         ],
@@ -82,12 +82,13 @@ class _MovieSliderState extends State<MovieSlider> {
 
 class _MoviePoster extends StatelessWidget {
   final Movie movie;
-  final String heroId;
+  final String heroId;    // Pass as argument also the Id
 
   const _MoviePoster( this.movie, this.heroId );
 
   @override
   Widget build(BuildContext context) {
+    // Generate unique Id
     movie.heroId = heroId;
 
     return Container(
@@ -98,7 +99,7 @@ class _MoviePoster extends StatelessWidget {
         children: [
           GestureDetector(        // It allows doing navigation based on Tap event
             onTap: () => Navigator.pushNamed(context, 'details', arguments: movie ),    // details    Name indicated as route
-            child: Hero(
+            child: Hero(          // Wrap with Hero to make a transaction -- animation in the transaction to share the same widget -- by tag
               tag: movie.heroId!,
               child: ClipRRect(   // Wrap FadeInImage with it, to add a 'borderRadius'
                 borderRadius: BorderRadius.circular(20),

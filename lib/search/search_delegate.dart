@@ -108,10 +108,11 @@ class _MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Generate unique Id
     movie.heroId = 'search-${movie.id}';
 
     return ListTile(
-      leading: Hero(
+      leading: Hero(      // Wrap with Hero to make a transaction -- animation in the transaction to share the same widget -- by tag
         tag: movie.heroId!,
         child: FadeInImage(
           placeholder: AssetImage('assets/no-image.jpg'),
