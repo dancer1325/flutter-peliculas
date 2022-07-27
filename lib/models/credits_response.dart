@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+// Paste, copying the postman's response generated in https://app.quicktype.io/
 class CreditsResponse {
     CreditsResponse({
         required this.id,
@@ -59,6 +60,7 @@ class Cast {
     String? department;
     String? job;
 
+    // fullProfilePath        Non existing property in provider's model. It's created to create the complete url to each Cast's image
     get fullProfilePath {
       if ( this.profilePath != null )
         return 'https://image.tmdb.org/t/p/w500${ this.profilePath }';

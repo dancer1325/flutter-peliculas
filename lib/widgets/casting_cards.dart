@@ -5,27 +5,32 @@ import 'package:peliculas/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
 
 class CastingCards extends StatelessWidget {
-  final int movieId;
+  final int movieId;    // Only required property to get the casting
 
   const CastingCards( this.movieId );
 
   @override
   Widget build(BuildContext context) {
+
+    // Get access to the provider via context
+    // listen   false - Since it won't be redrawn in case that there are value changes, my code is in charge of relaunching the request
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
 
     return FutureBuilder(
-      future: moviesProvider.getMovieCast(movieId),
-      builder: ( _, AsyncSnapshot<List<Cast>> snapshot) {
-        
+      future: moviesProvider.getMovieCast(movieId),  // Launch the request
+      builder: ( _, AsyncSnapshot<List<Cast>> snapshot) {     // <List<Cast>>   indicated, because if not, it assumes as 'dynamic'
+
+        // In case no response is received
         if( !snapshot.hasData ) {
           return Container(
             constraints: BoxConstraints(maxWidth: 150),
             height: 180,
-            child: CupertinoActivityIndicator(),
+            // child: CircularProgressIndicator(),      // Another Widget to indicate that it's loading
+            child: CupertinoActivityIndicator(),        //  It belongs to IoS package, but it can be used in Android
           );
         }
 
-        final List<Cast> cast = snapshot.data!;
+        final List<Cast> cast = snapshot.data!;     // .data    It's the latest data received from the async computation
 
         return Container(
           margin: EdgeInsets.only( bottom: 30 ),
@@ -45,7 +50,7 @@ class CastingCards extends StatelessWidget {
 class _CastCard extends StatelessWidget {
   final Cast actor;
 
-  const _CastCard( this.actor );
+  const _CastCard( this.actor );    // Only required property to get the CastCard
 
   @override
   Widget build(BuildContext context) {

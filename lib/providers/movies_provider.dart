@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
   List<Movie> onDisplayMovies = [];
   List<Movie> popularMovies   = [];
 
+  // Keep in memory a map of MovieId - List of Cast
   Map<int, List<Cast>> moviesCast = {};
     
   int _popularPage = 0;
@@ -36,6 +36,7 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
 
     this.getOnDisplayMovies();      // this     It's unnecessary here, but it can be add it to remark it
     this.getPopularMovies();
+    // Movie's casting isn't launched each time that it's built the Widget, that's why no request is indicated here
   }
 
   // [int page = 1]       Optional with 1 as default value
@@ -54,6 +55,8 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     return response.body;
   }
 
+  // Ways to notify a received request's response
+  // 1) notifyListeners();
   getOnDisplayMovies() async {
     final jsonData = await this._getJsonData('3/movie/now_playing');
     final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
@@ -79,13 +82,17 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     notifyListeners();
   }
 
+  // 2) Future and await the response in the proper part of the code
   Future<List<Cast>> getMovieCast( int movieId ) async {
+    print("movieId $movieId");
 
+    // If the request has been done and stored in memory --> Not to request again
     if( moviesCast.containsKey(movieId) ) return moviesCast[movieId]!;
 
     final jsonData = await this._getJsonData('3/movie/$movieId/credits');
     final creditsResponse = CreditsResponse.fromJson( jsonData );
 
+    // Store in the map, the response received
     moviesCast[movieId] = creditsResponse.cast;
 
     return creditsResponse.cast;
@@ -122,6 +129,5 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
 
     Future.delayed(Duration( milliseconds: 301)).then(( _ ) => timer.cancel());
   }
-
 
 }
