@@ -2,11 +2,12 @@ import 'dart:async';
 // Creditos
 // https://stackoverflow.com/a/52922130/7834829
 
+// <T>    Generic because it can emmit different objects
 class Debouncer<T> {
 
   Debouncer({ 
-    required this.duration, 
-    this.onValue 
+    required this.duration,     // Time to spend, previous to emit a value
+    this.onValue                // Function to launch whenever we get a value
   });
 
   final Duration duration;

@@ -71,33 +71,40 @@ class MovieSearchDelegate extends SearchDelegate {
     // Get access to the provider via context
     // listen   false - Since it won't be redrawn in case that there are value changes, my code is in charge of relaunching the request
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
-    
-    return FutureBuilder(
-        future: moviesProvider.searchMovies(query),
-        builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
-          if (!snapshot.hasData) return _emptyContainer();
-          final movies = snapshot.data!;    // .data    It's the latest data received from the async computation
 
-          return ListView.builder(
-            itemCount: movies.length,
-            itemBuilder: (_, int index) => _MovieItem(movies[index]));
-        }
-    );
-    
-    moviesProvider.getSuggestionsByQuery(query);
-
-    // return StreamBuilder(
-    //   stream: moviesProvider.suggestionStream,
-    //   builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
-    //     if (!snapshot.hasData) return _emptyContainer();
+    // Ways to search the movies
+    // 1) FutureBuilder
+    // 1.1 Cons
+    // 1.1.1 It can't be cancelled
+    // return FutureBuilder(
+    //     future: moviesProvider.searchMovies(query),
+    //     builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
+    //       if (!snapshot.hasData) return _emptyContainer();
+    //       final movies = snapshot.data!;    // .data    It's the latest data received from the async computation
     //
-    //     final movies = snapshot.data!;
-    //
-    //     return ListView.builder(
+    //       return ListView.builder(
     //         itemCount: movies.length,
     //         itemBuilder: (_, int index) => _MovieItem(movies[index]));
-    //   },
+    //     }
     // );
+
+    // 2) StreamBuilder
+    // 2.1 Pros
+    // 2.1.1 You can control the flow
+    moviesProvider.getSuggestionsByQuery(query);
+
+    return StreamBuilder(
+      stream: moviesProvider.suggestionStream,    // Stream which handles if the StreamBuilder will be redrawn
+      builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
+        if (!snapshot.hasData) return _emptyContainer();
+
+        final movies = snapshot.data!;
+
+        return ListView.builder(
+            itemCount: movies.length,
+            itemBuilder: (_, int index) => _MovieItem(movies[index]));
+      },
+    );
   }
 }
 

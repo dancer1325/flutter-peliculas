@@ -27,10 +27,13 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
   // Class to launch a HTTP after pressing each keyboard
   final debouncer = Debouncer(
     duration: Duration( milliseconds: 500 ),
+    // onValue:     // It's not defined here, because we don't know what it's
   );
 
+  // StreamController which emits List<Movie>
+  // .broadcast()     allow several objects are suscribed to changes of this stream
   final StreamController<List<Movie>> _suggestionStreamContoller = new StreamController.broadcast();
-  Stream<List<Movie>> get suggestionStream => this._suggestionStreamContoller.stream;
+  Stream<List<Movie>> get suggestionStream => this._suggestionStreamContoller.stream;   // .stream    It's the outcome property
 
   MoviesProvider() {
     print('MoviesProvider initialized');
@@ -116,19 +119,20 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     return searchResponse.results;
   }
 
+  // Establish the logic to launch the request to search the movies
   void getSuggestionsByQuery( String searchTerm ) {
-
-    debouncer.value = '';
-    debouncer.onValue = ( value ) async {
+    debouncer.value = '';                         // Reset debouncer.value
+    debouncer.onValue = ( value ) async {         // Method invoked after spending timer
       // print('Tenemos valor a buscar: $value');
       final results = await this.searchMovies(value);
-      this._suggestionStreamContoller.add( results );
+      this._suggestionStreamContoller.add( results );   // Add new event to the StreamController, to be listened by StreamBuilder.stream
     };
 
-    final timer = Timer.periodic(Duration(milliseconds: 300), ( _ ) { 
+    final timer = Timer.periodic(Duration(milliseconds: 300), ( _ ) {     // (_)    Timer which it's not used at all
       debouncer.value = searchTerm;
     });
 
+    // Cancel the timer, if a new value is received
     Future.delayed(Duration( milliseconds: 301)).then(( _ ) => timer.cancel());
   }
 
