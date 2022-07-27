@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/models/models.dart';
 
+// Reasons to create as StatefulWidget
+// 1) Keep the reference to the Scrollview
+// 2) Initialize and add a listener to the Scrollview
+// 3) Destroy ScrollController when they aren't necessaries, to avoid Flutter have always on memory
 class MovieSlider extends StatefulWidget {
   // Arguments passed to handle all about the MovieSlider
   final List<Movie> movies;
   final String? title;
-  final Function onNextPage;
+  final Function onNextPage;    // Function, which will launch the HTTP call
 
   const MovieSlider({
     Key? key, 
@@ -20,23 +24,25 @@ class MovieSlider extends StatefulWidget {
 
 class _MovieSliderState extends State<MovieSlider> {
 
+  // This ScrollController is associated to ListView's builder
   final ScrollController scrollController = new ScrollController();
 
+  // Executed the first time the Widget is built
   @override
   void initState() { 
     super.initState();
     
     scrollController.addListener(() {
-      
+      // print(scrollController.position.pixels);     // ScrollController's position, according you move your mouse
+      // scrollController.position.maxScrollExtent      Maximum position to which the ScrollController can be extended
       if ( scrollController.position.pixels >= scrollController.position.maxScrollExtent - 500 ) {
+        print('Call to the next page elements');
         widget.onNextPage();
       }
-      
-
     });
-
   }
 
+  // Executed when the Widget is destroyed
   @override
   void dispose() {
     super.dispose();

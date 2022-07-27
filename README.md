@@ -70,6 +70,8 @@ samples, guidance on mobile development, and a full API reference.
     * Wrap a Widget
         * [VSC] 'CTRL + .'
         * [Android Studio] 'ALT + Enter'
+    * Other
+        * [Android Studio] https://medium.com/flutter-community/flutter-ide-shortcuts-for-faster-development-2ef45c51085b
 * Flutter inspector
     * [Android Studio] https://www.woolha.com/tutorials/using-flutter-widget-inspector-in-android-studio
 
