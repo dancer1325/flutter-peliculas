@@ -38,6 +38,8 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     this.getPopularMovies();
   }
 
+  // [int page = 1]       Optional with 1 as default value
+  // []   Indicate that it's optional
   Future<String> _getJsonData( String endpoint, [int page = 1] ) async {
     final url = Uri.https( _baseUrl, endpoint, {
       'api_key': _apiKey,
@@ -51,7 +53,6 @@ class MoviesProvider extends ChangeNotifier {     // ChangeNotifier   To declare
     print('response $response and response.body ${response.body}');
     return response.body;
   }
-
 
   getOnDisplayMovies() async {
     final jsonData = await this._getJsonData('3/movie/now_playing');
