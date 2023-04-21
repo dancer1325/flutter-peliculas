@@ -64,19 +64,25 @@ samples, guidance on mobile development, and a full API reference.
 * Dependencies
     * 'flutter_card_swipper' 
         * How to add?
-            * `flutter pub add card_swiper`
+          * `flutter pub add card_swiper`
         * Swiper / Carousel for Flutter
     * 'http'
         * How to add?
-            * `flutter pub add http`
+          * `flutter pub add http`
         * Future-based library for making HTTP requests.
     * 'provider'
         * How to add?
-            * `flutter pub add provider`
+          * `flutter pub add provider`
         * One of the most popular state managements.
-            * What does it do?
-                * Create an instance of a class, which you can access from anywhere via context.
+          * What does it do?
+            * Create an instance of a class, which you can access from anywhere via context.
         * Normally, it's added to the highest possible app level 
+    * 'flutter_launcher_icons'
+      * How to add?
+        * `flutter pub add -d flutter_launcher_icons`
+      * Allows adjusting app's icon, generating several icons for different platforms  in different resolutions
+      * How to run it?
+        * `flutter pub get` & `flutter pub run flutter_launcher_icons`
 * How to add assets?
     * Specify it in 'pubspec.yaml'
 * Shortcuts
