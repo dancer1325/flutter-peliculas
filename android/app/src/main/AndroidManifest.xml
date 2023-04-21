@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.peliculas">
+    package="com.dancer13.flutterpeliculas">
    <application
         android:label="Peliculas"
         android:icon="@mipmap/launcher_icon">
